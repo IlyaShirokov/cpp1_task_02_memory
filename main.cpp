@@ -45,7 +45,6 @@ void strreplace(char *pszResult, const char *pcszSubstr, const char *pcszStr2)
 
         }
 
-        pszResult = (char *)realloc(pszResult, strlen(buffer) + 2);
         strcpy(pszResult, buffer);
 
         free(buffer);
@@ -54,23 +53,14 @@ void strreplace(char *pszResult, const char *pcszSubstr, const char *pcszStr2)
 
 int main()
 {
-    char *sourceStr = (char*)malloc(strlen("aaaaffrfkfafrofoafaf") + 2);
-    strcpy(sourceStr, "aaaaffrfkfafrofoafaf");
+    char *sourceStr = (char*)malloc(strlen("ABABCDCDCD-ABABCD__") + 100);
+    strcpy(sourceStr, "ABABCDCDCD-ABABCD__");
 
-    char *subStr = (char*)malloc(strlen("af") + 2);
-    strcpy(subStr, "af");
+    char *subStr = (char*)malloc(strlen("ABCD") + 1);
+    strcpy(subStr, "ABCD");
 
-    char *replStr = (char*)malloc(strlen("0AB_") + 2);
-    strcpy(replStr, "0AB_");
-
-//    char *sourceStr = (char*)malloc(strlen("ABABCDCDCD-ABABCD__"));
-//    strcpy(sourceStr, "ABABCDCDCD-ABABCD__");
-
-//    char *subStr = (char*)malloc(strlen("ABCD"));
-//    strcpy(subStr, "ABCD");
-
-//    char *replStr = (char*)malloc(strlen("0AB"));
-//    strcpy(replStr, "0AB");
+    char *replStr = (char*)malloc(strlen("0AB") + 1);
+    strcpy(replStr, "0AB");
 
     strreplace(sourceStr, subStr, replStr);
     std::cout << sourceStr << std::endl;
